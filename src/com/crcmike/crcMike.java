@@ -1,3 +1,14 @@
+/* Author: 	Michael de Silva
+ * Date:	22nd December 2010
+ * Email:	michael@mwdesilva.com
+ * Blog:	bsodmike.com
+ *
+ * This started out as a self-learning test on creating a simple
+ * temperature conversion calculator.  I ended up incorporating a
+ * MD5 hash computation of a file stored on the SD card, and this
+ * checksum is presented as a Toast alert.
+ */
+
 package com.crcmike;
 
 import java.io.FileInputStream;
