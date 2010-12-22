@@ -59,7 +59,7 @@ public class crcMike extends Activity implements OnClickListener {
 			// do something when the button is clicked
 			try{
 				if (editText.getText().length() == 0) {
-					Toast.makeText(crcMike.this, "Please enter a valid temperature!", Toast.LENGTH_LONG).show();
+					Toast.makeText(getApplicationContext(), "Please enter a valid temperature!", Toast.LENGTH_LONG).show();
 					return;
 				}
 				
@@ -80,7 +80,11 @@ public class crcMike extends Activity implements OnClickListener {
 					radioF.setChecked(true);
 					radioC.setChecked(false);
 				}				
-	
+
+				// need to add List interface?
+				
+				
+				
 				/*
 				 *  testing the MD5 hash computation.
 				 */
@@ -90,14 +94,14 @@ public class crcMike extends Activity implements OnClickListener {
 				while ((num_read = in.read(buf)) != -1) {
 					  digest.update(buf, 0, num_read);
 				}
-				Toast.makeText(crcMike.this, asHex(digest.digest()), Toast.LENGTH_LONG).show();
+				Toast.makeText(getApplicationContext(), asHex(digest.digest()), Toast.LENGTH_LONG).show();
 				in.close();
 				
 			}catch (IOException e){
-				Toast.makeText(crcMike.this, "Error reading from " + file, Toast.LENGTH_LONG).show();
+				Toast.makeText(getApplicationContext(), "Error reading from " + file, Toast.LENGTH_LONG).show();
 		        Log.d(TAG, "IOException");				
 			}catch (Exception e){
-				Toast.makeText(crcMike.this, e.toString() + " / ID = " + id, Toast.LENGTH_LONG).show();
+				Toast.makeText(getApplicationContext(), e.toString() + " / ID = " + id, Toast.LENGTH_LONG).show();
 		        Log.d(TAG, "Exception");				
 			}
 			break;
