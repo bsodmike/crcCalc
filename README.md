@@ -16,13 +16,12 @@ Features
 Contributing
 ------------
 
-1. Fork it.
-2. Create a branch (`git checkout -b my_customCalc`)
-3. Commit your changes (`git commit -am "tweaked calculation"`)
-4. Push to the branch (`git push origin my_customCalc`)
-5. Create an [Issue][1] with a link to your branch
-6. Enjoy a Kit Kat and wait
+1. [Fork] it.
+2. Send a [pull] request.
+3. Enjoy a Kit Kat and wait.
 
+[Fork]: http://help.github.com/forking/
+[pull]: http://help.github.com/pull-requests/
 [1]: https://github.com/bsodmike/crcCalc/issues
 
 Comments
