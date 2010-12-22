@@ -10,8 +10,11 @@ Features
 * Played a bit with Toast
 * Accessed java.io.* to compute MD5 hash of a StringBufferInputStream
 * This was later tweaked to operate on a file itself
+* 45aaa73 Implemented the OnClickListener as [part of the Activity]
 
-*the fun is just starting*...
+[part of the Activity]: http://www.stealthcopter.com/blog/2010/04/android-grouping-onclicklisteners-together-by-implementation-in-an-activity/
+
+**the fun is just starting**...
 
 Contributing
 ------------
