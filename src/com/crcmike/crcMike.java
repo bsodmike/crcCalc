@@ -2,7 +2,6 @@ package com.crcmike;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.StringBufferInputStream;
 import java.io.InputStream;
 import java.io.File;
 import android.app.Activity;
@@ -12,14 +11,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 import android.content.Context;
 import android.view.View;
 
-
-public class crcMike extends Activity {
+public class crcMike extends Activity implements OnClickListener {
     private static final char[] HEX_CHARS = {'0', '1', '2', '3',
         									 '4', '5', '6', '7',
         									 '8', '9', 'a', 'b',
@@ -29,19 +26,37 @@ public class crcMike extends Activity {
 	RadioButton radioC, radioF;
 	EditText editText;
 
-	// Create an anonymous implementation of OnClickListener
-	private OnClickListener mCalcListener = new OnClickListener(){
-		public void onClick(View v){			
-			long id = 0;
-		    byte[] buf = new byte[65536];
-		    int num_read;
-
+    /** Called when the activity is first created. */
+	@Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+        
+        Log.d(TAG, "starting...");
+        
+        // find views by id
+		editText = (EditText)findViewById(R.id.editText);
+        radioC = (RadioButton)findViewById(R.id.radioC);
+        radioF = (RadioButton)findViewById(R.id.radioF);
+        buttonCalc = (Button)findViewById(R.id.buttonCalc);
+        
+        // add listener
+        buttonCalc.setOnClickListener(this);        
+    }
+	
+	public void onClick(View v){			
+		long id = 0;
+	    byte[] buf = new byte[65536];
+	    int num_read;
+	    switch(v.getId()){
+	    
+	    case R.id.buttonCalc:
 		    // the external storage is assumed as connected here!
 			String FILENAME = "test.log"; //hard coded filename!			
 			File path = Environment.getExternalStoragePublicDirectory(
 					Environment.DIRECTORY_DOWNLOADS);
 			File file = new File(path,FILENAME);
-
+	
 			// do something when the button is clicked
 			try{
 				if (editText.getText().length() == 0) {
@@ -68,7 +83,7 @@ public class crcMike extends Activity {
 					radioF.setChecked(true);
 					radioC.setChecked(false);
 				}				
-
+	
 				/*
 				 *  testing the MD5 hash computation.
 				 */
@@ -95,26 +110,9 @@ public class crcMike extends Activity {
 				Toast.makeText(context, text, duration).show();
 		        Log.d(TAG, "Exception");				
 			}
-		}
-	};  
-	
-    /** Called when the activity is first created. */
-	@Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-        
-        Log.d(TAG, "starting...");
-        
-        // find views by id
-		editText = (EditText)findViewById(R.id.editText);
-        radioC = (RadioButton)findViewById(R.id.radioC);
-        radioF = (RadioButton)findViewById(R.id.radioF);
-        buttonCalc = (Button)findViewById(R.id.buttonCalc);
-        
-        // add listener
-        buttonCalc.setOnClickListener(mCalcListener);        
-    }
+			break;
+	    }
+	}
 
 	// Converts to celcius
 	private float fToC(float fahrenheit) {
