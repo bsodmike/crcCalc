@@ -13,7 +13,6 @@ import android.widget.RadioButton;
 import android.util.Log;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
-import android.content.Context;
 import android.view.View;
 
 public class crcMike extends Activity implements OnClickListener {
@@ -60,10 +59,7 @@ public class crcMike extends Activity implements OnClickListener {
 			// do something when the button is clicked
 			try{
 				if (editText.getText().length() == 0) {
-					Context context = getApplicationContext();
-					CharSequence text = "Please enter a valid number";
-					int duration = Toast.LENGTH_LONG;
-					Toast.makeText(context, text, duration).show();
+					Toast.makeText(crcMike.this, "Please enter a valid temperature!", Toast.LENGTH_LONG).show();
 					return;
 				}
 				
@@ -75,7 +71,8 @@ public class crcMike extends Activity implements OnClickListener {
 					editText.setText(String
 							.valueOf(cToF(inputValue)));
 				}		
-			
+				
+				// switch the selected buttons
 				if (radioF.isChecked()) {
 					radioF.setChecked(false);
 					radioC.setChecked(true);
@@ -93,21 +90,14 @@ public class crcMike extends Activity implements OnClickListener {
 				while ((num_read = in.read(buf)) != -1) {
 					  digest.update(buf, 0, num_read);
 				}
-				Context context = getApplicationContext();
-				Toast.makeText(context, asHex(digest.digest()), Toast.LENGTH_LONG).show();
+				Toast.makeText(crcMike.this, asHex(digest.digest()), Toast.LENGTH_LONG).show();
 				in.close();
 				
 			}catch (IOException e){
-				Context context = getApplicationContext();
-				CharSequence text = "Error reading from " + file;
-				int duration = Toast.LENGTH_LONG;
-				Toast.makeText(context, text, duration).show();
+				Toast.makeText(crcMike.this, "Error reading from " + file, Toast.LENGTH_LONG).show();
 		        Log.d(TAG, "IOException");				
 			}catch (Exception e){
-				Context context = getApplicationContext();
-				CharSequence text = e.toString() + "ID = " + id;
-				int duration = Toast.LENGTH_LONG;
-				Toast.makeText(context, text, duration).show();
+				Toast.makeText(crcMike.this, e.toString() + " / ID = " + id, Toast.LENGTH_LONG).show();
 		        Log.d(TAG, "Exception");				
 			}
 			break;
