@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Temp Converter</string>
+    <string name="title">Mike\'s Temperature Converter</string>
+	<color name="bgColor">#FFF</color>
+	<color name="textColor">#000</color>
+	<string name="celsius">to Celsius</string>
+	<string name="fahrenheit">to Fahrenheit</string>
+	<string name="calc">Calculate</string>
+</resources>
