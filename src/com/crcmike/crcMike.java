@@ -1,3 +1,12 @@
+/* Author: 	Michael de Silva
+ * Date:	23nd December 2010
+ * Email:	michael@mwdesilva.com
+ * Blog:	bsodmike.com
+ *
+ * This started out as a self-learning test on creating a simple
+ * temperature conversion calculator.  
+ */
+
 package com.crcmike;
 
 import java.io.FileInputStream;
